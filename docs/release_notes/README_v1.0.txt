@@ -27,8 +27,6 @@ New since v0.17 (v1.0: complete)
 - Siana in the Jungle village: her worry is about Namo ("...he ran off
   from the village all by himself."), and her later line reads "Namo's
   sense of justice is second to none."
-- Line breaks: "Indeed! I am the boss / of the Marionette Gang... /
-  Nuts Cracker!!" and "So YOU'RE the $2,000,000 / bounty, Material Horn!!".
 - The whole game has been played through to "THE END?".
 
 New since v0.16 (ending and credits)
