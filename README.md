@@ -72,7 +72,7 @@ To look at the Japanese next to the English, run `python3 tools/side_by_side.py`
 
 ## License
 
-- Source code (build scripts, tools, assembly, playtest toolkit): [MIT](LICENSE)
+- Source code (build scripts, tools, assembly, playtest toolkit): [MIT](LICENSE). The snes9x debug patch in `playtest/` follows the snes9x license.
 - Translation text, the project's English letter designs, the English logo and the docs: [CC BY-NC 4.0](LICENSE-TRANSLATION.md). This covers only this project's own contributions; nothing here grants rights in Falcom's game. Please don't sell the patch or patched ROMs and carts.
 
 ## Credits

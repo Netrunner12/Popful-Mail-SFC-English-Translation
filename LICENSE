@@ -3,8 +3,9 @@ MIT License
 Copyright (c) 2026 Netrunner12
 
 This license covers the source code in this repository: the Python scripts
-(patch/*.py, tools/, logo/convert.py, playtest/), the 65816 assembly
-(patch/engine.asm) and the emulator patch (playtest/snes9x_debug.patch).
+(patch/*.py, tools/, logo/convert.py, playtest/) and the 65816 assembly
+(patch/engine.asm). playtest/snes9x_debug.patch is a change to snes9x and
+falls under the snes9x license instead.
 The translation text and graphics, including the letter designs stored in
 patch/font_en.py, patch/mapnames.py and patch/credits.py, are covered
 separately; see LICENSE-TRANSLATION.md.
