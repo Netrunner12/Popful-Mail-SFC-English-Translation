@@ -194,3 +194,4 @@ user states 006/008 x 3 heroes x 3 policies: clean.
 - M0112 shop sign: "Closed for Now / ~Off to Port Miine!~" (even lengths, exact centre).
 - Monster Card box (13#0 substring 064B + M0723): "Received the Monster Card!" alone on the middle line.
 - KEEP_SIZE pads 05#1 and 13#0 so later text blocks keep their v1.0 addresses.
+- M0654 (tavern sign narration): removed the leading line break added in the green-box pass. The game enters this message a few bytes early, at a line break + indent kept from the Japanese, so it already starts on line 2; the review renders started at the message itself and showed it on line 1. Scan of every message for a line break hidden before its start: only M0473, M0654, M1785 (narration) and M2045; rendered from the real entry point, all now start on line 2.
