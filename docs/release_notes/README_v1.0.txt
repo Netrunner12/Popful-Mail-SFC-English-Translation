@@ -2,7 +2,7 @@ Popful Mail (SFC) - English fan translation - patch v1.0
 =========================================================================
 
 Apply to:  Popful Mail (Japan).sfc   (1 MB, no copier header, CRC32 88E5BCDF)
-Result:    2 MB LoROM, CRC32 113F7A27
+Result:    2 MB LoROM, CRC32 C4D612E7
 Formats:   popful_mail_en_v1.0.bps (recommended, verifies the source ROM)
            popful_mail_en_v1.0.ips (same result, no source check)
 Both checked by applying them to the original ROM; the result boots and
@@ -22,6 +22,8 @@ New since v0.17 (v1.0: complete)
   now reads "Closed for Now / ~Off to Port Miine!~", and receiving the
   Monster Card reads "Received the Monster Card!" on one line in the
   middle of the box.
+- "At the tavern entrance there's / a sign for a bounty exchange." is
+  back on the second and third lines of its box.
 - The whole game has been played through to "THE END?".
 
 New since v0.16 (ending and credits)
