@@ -70,6 +70,11 @@ To look at the Japanese next to the English, run `python3 tools/side_by_side.py`
 - In-game saves carry over between patch versions. Emulator save states made with an older version of the patch can show old text or crash, because they hold the old code in memory.
 - Some staff-name readings in the credits could not be confirmed from a published source (see `docs/release_notes/README_v0.6.txt`). Corrections are welcome — please open an issue.
 
+## License
+
+- Source code (build scripts, tools, assembly, playtest toolkit): [MIT](LICENSE)
+- Translation text, the project's English letter designs, the English logo and the docs: [CC BY-NC 4.0](LICENSE-TRANSLATION.md). This covers only this project's own contributions; nothing here grants rights in Falcom's game. Please don't sell the patch or patched ROMs and carts.
+
 ## Credits
 
 - Translation patch: Netrunner12
