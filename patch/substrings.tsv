@@ -1,0 +1,16 @@
+# Japanese text inside shared substrings / data regions (called with 20 0E, or reached by jumps).
+# stream	start	end (exclusive, hex offsets in the decompressed stream)	English
+05#7	0E34	0E4E	The door is locked⏎<18:04>and won't open.
+05#8	0AD5	0ADB	------
+13#0	064B	0653	      Received the
+13#0	066F	067D	Gwahahahaha!!
+15#0	090E	0917	Nwoooooh!!
+15#2	0EA3	0EAC	Kah-kah-kah-kah!
+15#4	0359	0361	Castle Alcazar
+15#4	0363	0368	Right
+17#8	1310	1316	......
+13#0	0F2D	0F2E	
+13#2	1309	130A	"
+05#5	106D	106F	◐◑ 
+13#2	130A	130C	◐◑ 
+13#2	1394	1396	◐◑ 

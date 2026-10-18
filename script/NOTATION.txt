@@ -1,0 +1,63 @@
+Popful Mail (SFC) English translation - script notes
+====================================================
+
+popful_mail_translation.tsv   one row per message (2,425)
+  id                 message ID (M0001...)
+  stream             bank#stream the message lives in (e.g. 05#1)
+  rom_stream_offset  file offset of that compressed stream in the ROM
+  msg_offset         offset of the message inside the DEcompressed stream
+                     (streams load to RAM $7E:C000, so pointer = $C000 + offset)
+  en                 English, unwrapped
+  en_wrapped         English as inserted (the build re-flows boxes of 3+ lines at 30 letters)
+
+The Japanese text is not in the repo. `python3 tools/side_by_side.py` decodes it from your own ROM
+and writes out/side_by_side.tsv with the Japanese next to the English.
+
+Later corrections live in patch/overrides.tsv, patch/condensed.tsv and patch/extra_msgs.tsv, which
+take priority over this file; patch/names.tsv has the speaker labels and patch/substrings.tsv the
+text inside shared substrings.
+
+Notation (same in the Japanese and English text)
+  ⏎  20 0B  new line          ▼  20 0C  next box          ■  20 FF  end of message
+  【Mail】【Tatto】【Gaw】【NARR】 = 20 08 / 20 09 / 20 0A / 20 04 (portrait / narration)
+  〔Name〕   inline name label: 20 12 <name> 20
+  {[Name]}  20 0E <ptr>: call to the speaker-name string defined at the top of the stream
+            (the definition itself must be translated too — see glossary below)
+  ⏸ ⏸1 ⏸2   20 13 00/01/02 (pause)
+  «...»     20 01 ... 20 00 (highlight)      ‹...» / ‹... 20 02 (big/shout text)
+  <XX:args> any other 20 XX command, args as hex — keep as-is
+  <10:..>   branch on lead character (pointers to Mail/Tatto/Gaw variants);
+  <0D:..>   jump past the remaining variants. Pointers must be recalculated after
+            reinsertion because message lengths change.
+  Other {...} calls in the JP (e.g. {・・・}, {かーっかっかっかっ}, {モンスターカード}) were
+  written out as plain English in the EN column instead of keeping the call.
+
+Special EN values
+  =          not dialogue (script bytecode caught by the extractor) — leave the original bytes
+  ⟦KEEP⟧     keep the original leading bytes up to the first 【/〔/{ token, then the English
+  §          line breaks were placed by hand (signs, centered narration, the Lucina poem) —
+             don't re-wrap
+  !MANUAL!   M2368 (location menu entry "Port Miine") has an unclear byte layout; insert by hand
+  Stray kana before English (e.g. "ユはMy Namo…", "<14:0302>何ひHonestly…") are command
+  argument bytes that decode as kana. They must stay exactly as they are.
+
+Name glossary (speaker labels and terms)
+  メイル Mail · タット Tatto · ガウ Gaw ("..., gaw!" verbal tic)
+  マテリアル・ホルン Material Horn · マリル・ホルン Maril Horn ("Master Tatto")
+  ブラッキィ Blacky · ナモ Namo · シアナ Siana · ナッツ・クラッカー Nuts Cracker
+  マリオネット強盗団 the Marionette Gang · 水路野郎 the Waterway Man (Shachio Filshark)
+  ルティ Ruti ("Shatchy") · バッソ Basso · マイス Maice · リューク Ryuke · システィ Sisty
+  ウド Udo · 長老 the Elder · マーベラ Marvela · サジム Sajim · 邪教徒 cultist
+  リップ Rip · ラップ Rap · パーム Palm · ドッケン Dokken · ソルディオス Soldios (Soldi)
+  死の神デサロディオス Desarodios, God of Death · 獣神ベルクリフト Belcrift the Beast God
+  至高神/邪神ガイストレイス Geistreis (Supreme God / evil god) · ルシーナ Lucina, Goddess of Light
+  ゴルアデス Goruades · サンダードラゴン Thunder Dragon · ディノ・フィッシュ Dino Fish
+  怪獣 beastie (friendly cave folk, distinct from モンスター monster)
+  ペンギン族 penguin folk · ミルキー Milky · ヨッシィ Yosshy · ピーナ Peena · マイク Mike
+  聖剣ライトセーバー the holy sword Lightsaber · モンスターカード Monster Card
+  Places: サミーナの村 Samina Village · ミーネの港 Port Miine · ジャングル the Jungle ·
+  古代の洞窟 Ancient Caves · ガデス遺跡 Gades Ruins · ハーゲル島 Hagel Island ·
+  氷の塔 Ice Tower · 死の谷 Valley of Death · アルカザール城 Castle Alcazar
+
+Table fixes since the first .tbl: 3A=聞, 213E=顔, 2130=像, E9=遺, 2123=愛, 2120=賞,
+213A=雲, 2145=交, 215D=史, 218A=更, 21DB=港, 21DF=安, 3C=羊(unverified).

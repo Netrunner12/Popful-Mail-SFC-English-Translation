@@ -1,0 +1,121 @@
+diff --git a/cpuexec.cpp b/cpuexec.cpp
+index 0494810..ecf2093 100644
+--- a/cpuexec.cpp
++++ b/cpuexec.cpp
+@@ -138,6 +138,9 @@ void S9xMainLoop (void)
+ 
+ 		uint8				Op;
+ 		struct	SOpcodes	*Opcodes;
++		{ extern uint32 g_trace_on, g_trace_pos, g_trace_buf[]; extern uint8 g_trace_valid[];  /* playtest: ring of recent PCs */
++		  if (g_trace_on == 1) { g_trace_buf[g_trace_pos & 0xFFFF] = Registers.PBPC; g_trace_pos++;
++		    if (!g_trace_valid[Registers.PB]) g_trace_on = 2; } }   /* left the game's code: freeze the record */
+ 
+ 		if (CPU.PCBase)
+ 		{
+diff --git a/getset.h b/getset.h
+index bd3b365..970cf35 100644
+--- a/getset.h
++++ b/getset.h
+@@ -57,6 +57,11 @@ static inline int32 memory_speed (uint32 address)
+ 
+ inline uint8 S9xGetByte (uint32 Address)
+ {
++	{ extern uint32 g_rwatch_lo, g_rwatch_hi; extern void g_rwatch_log(uint32,uint32);
++	  uint32 a=Address&0xFFFFFF; uint32 wa=0xFFFFFFFF;
++	  if ((a&0xFE0000)==0x7E0000) wa=a&0x1FFFF; else if (((a>>16)<0x40 || ((a>>16)>=0x80&&(a>>16)<0xC0)) && (a&0xFFFF)<0x2000) wa=a&0x1FFF;
++	  if (wa>=g_rwatch_lo && wa<g_rwatch_hi) g_rwatch_log(wa, Registers.PBPC); }
++
+ 	int		block = (Address & 0xffffff) >> MEMMAP_SHIFT;
+ 	uint8	*GetAddress = Memory.Map[block];
+ 	int32	speed = memory_speed(Address);
+@@ -170,6 +175,11 @@ inline uint8 S9xGetByte (uint32 Address)
+ 
+ inline uint16 S9xGetWord (uint32 Address, enum s9xwrap_t w = WRAP_NONE)
+ {
++	{ extern uint32 g_rwatch_lo, g_rwatch_hi; extern void g_rwatch_log(uint32,uint32);
++	  uint32 a=Address&0xFFFFFF; uint32 wa=0xFFFFFFFF;
++	  if ((a&0xFE0000)==0x7E0000) wa=a&0x1FFFF; else if (((a>>16)<0x40 || ((a>>16)>=0x80&&(a>>16)<0xC0)) && (a&0xFFFF)<0x2000) wa=a&0x1FFF;
++	  if (wa>=g_rwatch_lo && wa<g_rwatch_hi) g_rwatch_log(wa, Registers.PBPC); }
++
+ 	uint16	word;
+ 
+ 	uint32	mask = MEMMAP_MASK & (w == WRAP_PAGE ? 0xff : (w == WRAP_BANK ? 0xffff : 0xffffff));
+@@ -339,6 +349,10 @@ inline uint16 S9xGetWord (uint32 Address, enum s9xwrap_t w = WRAP_NONE)
+ 
+ inline void S9xSetByte (uint8 Byte, uint32 Address)
+ {
++	{ extern uint32 g_watch_lo, g_watch_hi; extern void g_watch_log(uint32,uint32,uint8);
++	  uint32 a=Address&0xFFFFFF; uint32 wa=0xFFFFFFFF;
++	  if ((a&0xFE0000)==0x7E0000) wa=a&0x1FFFF; else if (((a>>16)<0x40 || ((a>>16)>=0x80&&(a>>16)<0xC0)) && (a&0xFFFF)<0x2000) wa=a&0x1FFF;
++	  if (wa>=g_watch_lo && wa<g_watch_hi) g_watch_log(wa, Registers.PBPC, Byte); }
+ 	int		block = (Address & 0xffffff) >> MEMMAP_SHIFT;
+ 	uint8	*SetAddress = Memory.WriteMap[block];
+ 	int32	speed = memory_speed(Address);
+@@ -450,6 +464,11 @@ inline void S9xSetByte (uint8 Byte, uint32 Address)
+ 
+ inline void S9xSetWord (uint16 Word, uint32 Address, enum s9xwrap_t w = WRAP_NONE, enum s9xwriteorder_t o = WRITE_01)
+ {
++	{ extern uint32 g_watch_lo, g_watch_hi; extern void g_watch_log(uint32,uint32,uint8);
++	  uint32 a=Address&0xFFFFFF; uint32 wa=0xFFFFFFFF;
++	  if ((a&0xFE0000)==0x7E0000) wa=a&0x1FFFF; else if (((a>>16)<0x40 || ((a>>16)>=0x80&&(a>>16)<0xC0)) && (a&0xFFFF)<0x2000) wa=a&0x1FFF;
++	  if (wa+1>=g_watch_lo && wa<g_watch_hi) { g_watch_log(wa|0x200000, Registers.PBPC, Word&0xFF); g_watch_log((wa+1)|0x200000, Registers.PBPC, Word>>8);} }
++
+ 	uint32	mask = MEMMAP_MASK & (w == WRAP_PAGE ? 0xff : (w == WRAP_BANK ? 0xffff : 0xffffff));
+ 	if ((Address & mask) == mask)
+ 	{
+diff --git a/libretro/libretro.cpp b/libretro/libretro.cpp
+index b7aaace..139295d 100644
+--- a/libretro/libretro.cpp
++++ b/libretro/libretro.cpp
+@@ -2663,3 +2663,25 @@ void S9xAutoSaveSRAM()
+ {
+     return;
+ }
++uint32 g_watch_lo=0xFFFFFFFF, g_watch_hi=0;
++static FILE* g_watch_f=NULL;
++void g_watch_log(uint32 wa,uint32 pc,uint8 b){ if(!g_watch_f) { char nm[96]; snprintf(nm,sizeof nm,"/tmp/snestest/watch_%d.log",(int)getpid()); g_watch_f=fopen(nm,"w"); } fprintf(g_watch_f,"%05X %06X %02X\n",wa,pc,b); }
++extern "C" RETRO_API void dbg_set_watch(unsigned lo,unsigned hi){ g_watch_lo=lo; g_watch_hi=hi; if(g_watch_f){fflush(g_watch_f);} }
++extern "C" RETRO_API void dbg_flush(void){ if(g_watch_f) fflush(g_watch_f); }
++uint32 g_rwatch_lo=0xFFFFFFFF, g_rwatch_hi=0;
++static FILE* g_rwatch_f=NULL;
++void g_rwatch_log(uint32 wa,uint32 pc){ if(!g_rwatch_f) { char nm[96]; snprintf(nm,sizeof nm,"/tmp/snestest/rwatch_%d.log",(int)getpid()); g_rwatch_f=fopen(nm,"w"); } fprintf(g_rwatch_f,"%05X %06X\n",wa,pc); }
++extern "C" RETRO_API void dbg_set_rwatch(unsigned lo,unsigned hi){ g_rwatch_lo=lo; g_rwatch_hi=hi; if(g_rwatch_f) fflush(g_rwatch_f); }
++extern "C" RETRO_API void dbg_rflush(void){ if(g_rwatch_f) fflush(g_rwatch_f); }
++extern "C" RETRO_API unsigned dbg_pc(void){ return Registers.PBPC; }
++extern "C" RETRO_API unsigned dbg_reg(int i){ switch(i){case 0:return Registers.A.W;case 1:return Registers.X.W;case 2:return Registers.Y.W;case 3:return Registers.S.W;case 4:return Registers.P.W;case 5:return Registers.DB;case 6:return Registers.D.W;} return 0; }
++
++uint32 g_trace_on = 0, g_trace_pos = 0, g_trace_buf[0x10000];
++uint8 g_trace_valid[256] = {1};
++extern "C" RETRO_API void dbg_trace_valid_banks(const unsigned char *m){ memcpy(g_trace_valid, m, 256); }
++extern "C" RETRO_API unsigned dbg_trace_state(void){ return g_trace_on; }
++extern "C" RETRO_API void dbg_trace_enable(unsigned on){ g_trace_on = on; if (on) g_trace_pos = 0; }
++extern "C" RETRO_API unsigned dbg_trace_read(unsigned *out, unsigned n){
++    unsigned have = g_trace_pos < 0x10000 ? g_trace_pos : 0x10000; if (n > have) n = have;
++    for (unsigned i = 0; i < n; i++) out[i] = g_trace_buf[(g_trace_pos - n + i) & 0xFFFF];
++    return n; }
+diff --git a/libretro/link.T b/libretro/link.T
+index 9e82b5d..0bf1319 100644
+--- a/libretro/link.T
++++ b/libretro/link.T
+@@ -1,4 +1,4 @@
+ {
+-   global: retro_*;
++   global: retro_*; dbg_*;
+    local: *;
+ };
+diff --git a/ppu.cpp b/ppu.cpp
+index c51b92b..f5d01f2 100644
+--- a/ppu.cpp
++++ b/ppu.cpp
+@@ -913,7 +913,11 @@ void S9xSetPPU (uint8 Byte, uint16 Address)
+ 
+ 			case 0x2180: // WMDATA
+ 				if (!CPU.InWRAMDMAorHDMA)
++				{
++					{ extern uint32 g_watch_lo, g_watch_hi; extern void g_watch_log(uint32,uint32,uint8);
++					  uint32 wa=PPU.WRAM&0x1FFFF; if (wa>=g_watch_lo && wa<g_watch_hi) g_watch_log(wa|0x100000, Registers.PBPC, Byte); }
+ 					REGISTER_2180(Byte);
++				}
+ 				break;
+ 
+ 			case 0x2181: // WMADDL

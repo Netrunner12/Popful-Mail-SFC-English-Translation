@@ -1,0 +1,33 @@
+# Text the first extraction pass missed (sat inside regions treated as data). stream	start	end	id	English
+05#0	0A4A	0A6D	X0001	⏎【NARR】<18:02>Received the⏎<18:04>Leather Armor.<11:00>■
+05#1	0A63	0A95	X0002	She ran off from the village⏎all on her own...⏎I'm so worried...<15:0004>■
+05#1	0E8F	0EB8	X0003	<08>Wait... the $2,000,000 bounty,⏎Material Horn...▼
+05#1	116E	1193	X0004	<08>So YOU'RE⏎the $2,000,000 bounty,⏎Material Horn!!▼
+05#4	04C8	04E2	X0005	Nothing but beasties ever⏎come down here, y'see.<0D:04c5>
+05#5	1318	1338	X0006	I dunno who you are, but⏎can't you do something?!<1D:0104>■
+05#5	14A7	14CB	X0007	【NARR】⏎Tatto took a pickaxe⏎<18:04>out of his pack.▼
+05#5	169E	16C5	X0008	I just can't give up!!⏎Someday, for sure,⏎I'll catch you!<15:0408>■
+05#6	0CD6	0D1B	X0009	Because of that earthquake,⏎the ladder up to the surface⏎is useless now!<0D:1bcd>...Hey! Let me finish⏎what I was sayin', will ya!
+05#7	0A97	0AB9	X0010	I've been studying these⏎waterways for ten years now...<15:0440>■
+05#7	0AF3	0B08	X0011	Go on, open that chest.<15:0420>■
+05#7	0B34	0B6A	X0012	⏎【NARR】<14:050144cb><14:05047acc><18:02>Inside was a⏎<18:04>Golden Scale.»<14:050178cc><14:041078cc>▼
+05#7	0C59	0C7A	X0013	That's the code of⏎a true adventurer.<15:0410><16:1f01>■
+05#7	0C7A	0C96	X0014	Down at the bottom⏎<18:04>was a pickaxe.»▼
+05#7	10CC	10E7	X0016	{[Waterway Man]}Heh...⏎You're still green.<15:0504>■
+05#7	10FD	1121	X0017	⏎【NARR】<14:050121d1><18:00>This rock seems loose.■
+13#0	1008	101C	X0018	<08>Thanks, mister!!<15:0304>■
+13#0	1205	1224	X0019	⏎【NARR】<18:03>Bought the⏎<18:04>Spike Boots.»▼
+13#0	164E	1670	X0020	Here's the medicine, as⏎promised: <19>＄長） gold.⏎Gwaaah-ha-ha-ha-ha!!■
+13#2	131B	1346	X0021	<08>............⏎(Why do I have a⏎<18:06>bad feeling...)▼
+13#2	1370	13A3	X0022	{[Blacky]}Blacky Brand Bomb No. 2,⏎practically born to clear⏎rockfalls like this one!▼
+13#2	1638	1655	X0023	{[Dwarf Guard]}Past this door⏎is the dwarf village.<15:0608>■
+13#7	09C2	09E3	X0024	<10:cac9d0c9d6c9><08><0D:d8c9><09><0D:d8c9><0A>Marvela?<15:0620>▼
+13#7	0B02	0B38	X0025	I'll tell the guard outside.⏎If you're willing, please⏎lend Udo and the rest a hand.<15:0610>■
+13#7	0B71	0BB4	X0026	<10:79cb8fcba3cb><08>Huh! That voice... Material!!<0D:aecb><09>Th-that voice... it's Master!<0D:aecb><0A>Where are you, gaw!!<15:0640>■
+15#4	05EB	061F	X0027	{[Peena]}What do you want with us⏎penguins? C'mon, tell me!<14:0a08dfc6><1C:0004ddc6>▼
+15#4	0A80	0AAF	X0028	(Rip and Rap are really⏎that old?!)<0D:04cb><09>Well, actually...▼
+15#4	0AD6	0B06	X0029	Who'd have thought it'd⏎come to this...<0D:04cb><0A>Rip and Rap were⏎both gods, gaw?▼
+15#6	1AB4	1ACE	X0030	【NARR】⏎<18:03>From somewhere,⏎<18:06>a voice rang out.■
+17#7	1CB8	1CD3	X0031	⏎【NARR】This part of the wall⏎<18:06>⇥-looks weak...■
+13#4	1EFB	1F2E	X0032	{[Udo]}Ah! Thank you!⏎⏸<10:16df1ddf24df>Mail<0D:26df>Tatto<0D:26df>Gaw¦!!<15:0720>■
+15#4	06D1	06DF	X0033	{[Peena]}Hmm.<1D:0004>■

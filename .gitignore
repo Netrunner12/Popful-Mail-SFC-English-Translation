@@ -1,0 +1,22 @@
+# Game data: never commit the ROM or anything built from it
+rom/*
+!rom/README.md
+*.sfc
+*.smc
+*.swc
+*.fig
+*.srm
+*.00[0-9]
+*.state
+*.bin
+
+# Built and generated files
+build/
+out/
+playtest/out/
+playtest/work/
+playtest/userstates/
+
+# Python
+__pycache__/
+*.pyc

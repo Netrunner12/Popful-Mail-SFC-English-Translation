@@ -1,0 +1,74 @@
+Popful Mail (SFC) - English fan translation - work-in-progress patch v0.10
+=========================================================================
+
+Apply to:  Popful Mail (Japan).sfc   (1 MB, no copier header, CRC32 88E5BCDF)
+Result:    2 MB LoROM, CRC32 6908F430
+Formats:   popful_mail_en_v0.10.bps (recommended, verifies the source ROM)
+           popful_mail_en_v0.10.ips (same result, no source check)
+Both checked with Flips; the patched ROM boots and plays in snes9x.
+
+As with earlier versions, emulator save states made with an older patch
+can show wrong text. In-game saves carry over fine.
+
+New since v0.9 (Port Miine / Jungle fixes)
+------------------------------------------
+- Locked doors say "The door is locked. / You can't get in."
+- Mail's line about Material Horn now reads on into the next box:
+  "Wait... the $2,000,000 bounty, Material Horn... is YOUR master?!"
+- Highlighted names (Ancient Caves, Gades Ruins, Maril, START) no longer
+  have extra gaps around them.
+- Tatto joining the party: Mail's name now appears where she starts
+  planning to use Tatto, and her next line has a short pause and reads
+  as her making up her mind.
+- Status screen: the name box is one letter wider, so TATTO fits.
+
+New in v0.9
+-----------
+- World map: the destination name bubbles are in English (Port Miine,
+  Jungle, Ancient Caves, Gades Ruins, Hagel Island, Castle Alcazar),
+  drawn in a new pixel font in the style of the original lettering.
+- The in-game save list (SELECT on the status screen) shows English area
+  names.
+- Locked houses now say "The door is locked. Nobody seems to live here."
+- Receiving the Monster Card now reads "Received the Monster Card!"
+
+New in v0.8
+-----------
+- The "Equip it?" prompt after you receive a weapon or armour is in
+  English (it was Japanese text inside the game's code).
+- The Monster Card line on the status screen reads MON CARD.
+- The Dwarf Medicine Man's contest display labels him DWARF.
+- Checked in play: every chapter's areas were loaded directly, and the
+  game was played with scripted input while the tools watched for any
+  text read from untranslated data. Nothing else turned up.
+
+New in v0.7
+-----------
+- Status screen: the item count no longer has the Japanese counter after
+  it ("ORANGE 1").
+- The enemy health bar in the top-of-screen display is labelled FOE.
+
+New in v0.6 (since v0.4)
+------------------------
+- Staff credits are romanized. The credit names are redrawn as English
+  letters in the credits' own outline style. A few readings could not be
+  confirmed from a published source and may be wrong:
+    Takahiro Tsunashima, Masaru Nakajima, Yoshinobu Nakahara,
+    Noriyoshi Akiba, Toshikuni Matsumae, Tadashi Hayakawa
+  Corrections are welcome.
+- The yes/no box (shops, saving) now reads YES / NO; the highlighted
+  choice is shown in orange.
+- Shop header labels (BUY, CASH, HEAL, KEYS, SAVE, SPEED) are in English.
+- Numbers in dialogue use the new font, with no stray gap before them.
+- Line fixes: dialogue boxes that were one line too long, and some
+  awkwardly split sentences.
+
+Still Japanese / known issues
+-----------------------------
+- The title-screen logo is intentionally left as the original Japanese artwork.
+- The ending and credits were checked with a debug jump, not by playing
+  to the end.
+- The dwarf contest display was fixed in the data but not seen in play
+  (it opens only after story progress).
+- Later chapters were spot-checked by jumping into each area, not played
+  through from start to finish.
