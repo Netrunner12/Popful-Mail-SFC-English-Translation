@@ -189,3 +189,8 @@ user states 006/008 x 3 heroes x 3 policies: clean.
 ## v1.0 English-logo edition
 - PM_LOGO=en build: original lettering design (patch/logo_en.npy, logo/design.py), original sword emblem. do_logo keeps Mode 7 tiles 0-15, 64, 192 (shared with the title menu BG1 layer). Release: popful_mail_en_v1.0_englishlogo.bps/.ips, CRC 5565BE5B (emblem re-cut from the original with its full outline).
 - Logo replaced with the user-supplied English logo (logo/user/ref.png -> logo/user/convert2.py -> patch/logo_en.npy), mapped to the title palette. 1B#5 needs compress_opt(skip_runs=True) to fit (4636/4804); 1B#7 moved to the bank tail. Standard build verified identical to v100.sfc.
+
+## v1.0 refresh (2026-10-18)
+- M0112 shop sign: "Closed for Now / ~Off to Port Miine!~" (even lengths, exact centre).
+- Monster Card box (13#0 substring 064B + M0723): "Received the Monster Card!" alone on the middle line.
+- KEEP_SIZE pads 05#1 and 13#0 so later text blocks keep their v1.0 addresses.

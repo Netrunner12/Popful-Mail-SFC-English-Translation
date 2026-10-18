@@ -142,7 +142,7 @@ def scroll_patches(rom, syms, wrapped):
 # text blocks padded to the size they had in a release, so the blocks after them do not move: emulator
 # save states keep the address of the loaded scene's text, and a shift would break them (v0.17: the
 # loose-wall line got shorter after the release; states for the ending were made with that release)
-KEEP_SIZE = {'17#7': 5157, '05#5': 5728}
+KEEP_SIZE = {'17#7': 5157, '05#5': 5728, '05#1': 4430, '13#0': 7189}
 
 PATCH_DIR = 0xC000           # $20:C000
 MSGADDR = {}
