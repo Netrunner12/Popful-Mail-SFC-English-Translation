@@ -46,7 +46,7 @@ PM_LOGO=en python3 patch/make.py build/popful_mail_en_logo.sfc    # English-logo
 python3 patch/mkpatch.py "rom/Popful Mail (Japan).sfc" build/popful_mail_en.sfc build/popful_mail_en_v1.0
 ```
 
-The first build decodes a message index from your ROM into `out/`, which takes a minute. A full build takes a few minutes, because the text banks are re-compressed. The standard build reproduces the released v1.0 ROM byte for byte.
+The first build also decodes a message index from your ROM into `out/`. The standard build takes about 2 minutes; the English-logo build about 15, because the logo data only fits with the slowest compression setting. Both reproduce the released v1.0 ROMs byte for byte.
 
 ## Repository layout
 
