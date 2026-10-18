@@ -2,7 +2,7 @@ Popful Mail (SFC) - English fan translation - patch v1.0, English title logo edi
 ====================================================================================
 
 Apply to:  Popful Mail (Japan).sfc   (1 MB, no copier header, CRC32 88E5BCDF)
-Result:    2 MB LoROM, CRC32 9C43CEA0
+Result:    2 MB LoROM, CRC32 4A9D8245
 Formats:   popful_mail_en_v1.0_englishlogo.bps (recommended, verifies the source ROM)
            popful_mail_en_v1.0_englishlogo.ips (same result, no source check)
 
