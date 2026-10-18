@@ -24,6 +24,9 @@ New since v0.17 (v1.0: complete)
   middle of the box.
 - "At the tavern entrance there's / a sign for a bounty exchange." is
   back on the second and third lines of its box.
+- Siana in the Jungle village: her worry is about Namo ("...he ran off
+  from the village all by himself."), and her later line reads "Namo's
+  sense of justice is second to none."
 - The whole game has been played through to "THE END?".
 
 New since v0.16 (ending and credits)
