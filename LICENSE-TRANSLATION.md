@@ -3,7 +3,7 @@
 ## What this covers
 
 - the English script and corrections: `script/`, `patch/*.tsv`
-- the English letter designs made for this patch: the glyph data in `patch/font_en.py` (text font, map-label lettering, credit names)
+- the English letter designs made for this patch: the text font in `patch/font_en.py` (also used for the credit names), the map-label lettering in `patch/mapnames.py` and the custom letters in `patch/credits.py`
 - the English title logo: `patch/logo_en.npy`, `logo/english_logo_source.png`
 - the documentation and release notes: `README.md`, `docs/`
 - the released patch files (`.bps` / `.ips`)
