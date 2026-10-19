@@ -19,7 +19,7 @@ Only three or four lines had translation issues, and there were two major bugs f
 
 The majority of the updates and fixes were display related, such as odd line breaks and text centering issues. Claude seemed to struggle the most with these two types of tasks.
 
-Originally, Claude was asked to design something similar to the English version of the logo from other games and media for a logo replacement, but the ask was rejected on the basis of copyright. Claude's attempt at making a new one was not very good, so I had ChatGPT make the one that is currently in the logo build.
+Originally, Claude was asked to design something similar to the English version of the logo from other versions of the game for a logo replacement, but the ask was rejected on the basis of copyright. Claude's attempt at making a new one was not very good, so I had ChatGPT make the one that is currently in the logo build.
 
 ## Download
 
