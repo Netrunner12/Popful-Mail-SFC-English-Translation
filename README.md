@@ -9,9 +9,11 @@ Made with Claude and meticulously play tested and curated by Netrunner.
 <img src="docs/images/intro.png" width="384" alt="Opening dialogue in English">
 </p>
 
-**v1.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END?" on the patched ROM.
+**v1.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END?" on the patched ROM. An identical version with an English "Popful Mail" logo has been created as well.
 
-This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. Instructions to Claude were to read over every piece of Japanese text first to gain a deeper understanding of the game's dialog so that each piece of dialog would make sense in the broader context of the entire game, instead of doing a line-by-line translation. I did not ask Claude to modernize or americanize the text, so much of what's in the patch resembles the original Japanese dialog in terms of its expression and how the text flows in line.
+This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. 
+
+Instructions to Claude were to read over every piece of Japanese text first to gain a deeper understanding of the game's dialog so that each piece of dialog would make sense in the broader context of the entire game, instead of doing a line-by-line translation. I did not ask Claude to modernize or americanize the text, so much of what's in the patch resembles the original Japanese dialog in terms of its expression and how the text flows in line.
 
 Claude spent roughly 4 hours translating and reinserting the text. At this point, v0.06, the game was fully playable. 9 hours were spent over the course of a week playing through the game on a snes9x emulator, the same emulator Claude has in its toolkit. 
 
