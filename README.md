@@ -11,7 +11,7 @@ Made with Claude and meticulously play tested and curated by Netrunner.
 
 **v1.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END?" on the patched ROM.
 
-This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. Instructions to Claude were to read over every piece of Japanese text first to gain a deeper understanding of the game's dialog so that each piece of dialog would make sense in the broader context of the entire game, instead of doing a line-by-line translation. I did not ask Claude to modernize or americanize the text, so much of what's in the patch resembles the original Japanese dialog in terms of it's espression and how the text flows in line.
+This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. Instructions to Claude were to read over every piece of Japanese text first to gain a deeper understanding of the game's dialog so that each piece of dialog would make sense in the broader context of the entire game, instead of doing a line-by-line translation. I did not ask Claude to modernize or americanize the text, so much of what's in the patch resembles the original Japanese dialog in terms of its expression and how the text flows in line.
 
 Claude spent roughly 4 hours translating and inserting the text. At this point, v0.06, the game was fully playable. 9 hours were spent over the course of a week playing through the game on a snes9x emulator, the same emulator Claude has in its toolkit. 
 
@@ -20,8 +20,6 @@ Only three or four lines had translation issues, and there were two major bugs f
 The majority of the updates and fixes were display related, such as odd line breaks and text centering issues. Claude seemed to struggle the most with these two types of tasks.
 
 Originally, Claude was asked to design something similar to the English version of the logo from other games and media for a logo replacement, but the ask was rejected on the basis of copyright. Claude's attempt at making a new one was not very good, so I had ChatGPT make the one that is currently in the logo build.
-
-<!-- ABOUT: write-up on how this patch was made with Claude goes here -->
 
 ## Download
 
