@@ -9,7 +9,7 @@ Made with Claude and meticulously play tested and curated by Netrunner.
 <img src="docs/images/intro.png" width="384" alt="Opening dialogue in English">
 </p>
 
-**v1.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END?" on the patched ROM. An identical version with an English "Popful Mail" logo has been created as well.
+**v1.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END?" on the patched ROM. An identical version with an English "Popful Mail" title plate has been created as well.
 
 This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. 
 
