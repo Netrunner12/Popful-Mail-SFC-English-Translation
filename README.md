@@ -15,9 +15,9 @@ This is a new translation of the Super Famicom version. It does not use the scri
 
 Claude spent roughly 4 hours translating and inserting the text. At this point, v0.06, the game was fully playable. 9 hours were spent playing through the game on a snes9x emulator, the same emulator Claude has in its toolkit. 
 
-Only three or four lines had translation issues, and there were two major bugs found during playtesting where the screen went black and the game could not continue. In a couple of instances, Claude missed a couple of areas where Japanese text had not been detected, and therefore was not translated. These were on the world map, and in one instance where text scrolls down the page while a character tells a story about an ancient legend. Claude fixed the bugs, corrected the missing translations, and built new tools to find and detect similar bugs. 
+Only three or four lines had translation issues, and there were two major bugs found during playtesting where the screen went black and the game could not continue. In a couple of instances, Claude missed a couple of areas where Japanese text had not been detected, and therefore was not translated. These were on the world map, and in one instance where text scrolls down the page while a character tells a story about an ancient legend. Claude fixed the bugs, corrected the missing translations, and built new tools to find and detect similar bugs. Claude also built new tools that allowed it to play test the entire game quickly with all main characters.
 
-Claude also built new tools that allowed it to play test the entire game quickly with all main characters. The majority of the updates all in all were display related, such as odd line breaks and text centering issues.
+ The majority of the updates and fixes were display related, such as odd line breaks and text centering issues. Claude seemed to struggle the most with these two types of tasks.
 
 <!-- ABOUT: write-up on how this patch was made with Claude goes here -->
 
