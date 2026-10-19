@@ -1,6 +1,8 @@
 # Popful Mail (SFC) — English Translation
 
-An English fan translation of **Popful Mail** for the Super Famicom (Falcom, Japanese release), distributed as a patch for the original ROM. Made with Claude and meticulously play tested and curated by Netrunner.
+An English fan translation of **Popful Mail** for the Super Famicom (Falcom, Japanese release), distributed as a patch for the original ROM. 
+
+Made with Claude and meticulously play tested and curated by Netrunner.
 
 <p>
 <img src="docs/images/title.png" width="384" alt="Title screen">
