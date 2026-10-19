@@ -17,7 +17,9 @@ Claude spent roughly 4 hours translating and inserting the text. At this point, 
 
 Only three or four lines had translation issues, and there were two major bugs found during playtesting where the screen went black and the game could not continue. In a couple of instances, Claude missed areas where Japanese text had not been detected, and therefore was not translated. These were on the world map, and in one instance where text scrolls down the page while a character tells a story about an ancient legend. Claude fixed the bugs, corrected the missing translations, and built new tools to find and detect similar bugs. Claude also built new tools that allowed it to play test the entire game quickly with all main characters.
 
- The majority of the updates and fixes were display related, such as odd line breaks and text centering issues. Claude seemed to struggle the most with these two types of tasks.
+The majority of the updates and fixes were display related, such as odd line breaks and text centering issues. Claude seemed to struggle the most with these two types of tasks.
+
+Originally, Claude was asked to design something similar to the English version of the logo from other games and media for a logo replacement, but the ask was rejected on the basis of copyright. Claude's attempt at making a new one was not very good, so I had ChatGPT make the one that is currently in the logo build.
 
 <!-- ABOUT: write-up on how this patch was made with Claude goes here -->
 
