@@ -35,7 +35,7 @@ Get the patches from the [Releases](../../releases) page. There are two editions
 Everything apart from the title logo is identical. Apply **one** of them to the original ROM:
 
 - **ROM:** `Popful Mail (Japan).sfc`, 1 MB, no copier header, CRC32 `88E5BCDF`
-- **Result:** 2 MB LoROM. CRC32 `DAE323CA` (standard) or `E48808AC` (English logo)
+- **Result:** 2 MB LoROM. CRC32 `935F4AD1` (standard) or `C786689B` (English logo)
 - The `.bps` file checks the source ROM before patching and is the one to use. Any BPS patcher works, such as [Floating IPS](https://github.com/Alcaro/Flips) or [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 
 ROMs are not provided here.

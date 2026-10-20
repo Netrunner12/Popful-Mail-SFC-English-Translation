@@ -2,7 +2,7 @@ Popful Mail (SFC) - English fan translation - patch v1.1
 =========================================================================
 
 Apply to:  Popful Mail (Japan).sfc   (1 MB, no copier header, CRC32 88E5BCDF)
-Result:    2 MB LoROM, CRC32 DAE323CA
+Result:    2 MB LoROM, CRC32 935F4AD1
 Formats:   popful_mail_en_v1.1.bps (recommended, verifies the source ROM)
            popful_mail_en_v1.1.ips (same result, no source check)
 Both checked by applying them to the original ROM; the result boots and
