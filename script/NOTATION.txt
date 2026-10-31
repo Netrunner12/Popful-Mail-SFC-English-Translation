@@ -25,6 +25,9 @@ Notation (same in the Japanese and English text)
             (the definition itself must be translated too — see glossary below)
   ⏸ ⏸1 ⏸2   20 13 00/01/02 (pause)
   «...»     20 01 ... 20 00 (highlight)      ‹...» / ‹... 20 02 (big/shout text)
+  ⟪...⟫     20 01 ... 20 00 gold highlight added in English only (patch/*.tsv; not matched
+            against the Japanese highlight codes)
+  ⏹          20 FF end of message added in English only (the scene code runs the rest)
   <XX:args> any other 20 XX command, args as hex — keep as-is
   <10:..>   branch on lead character (pointers to Mail/Tatto/Gaw variants);
   <0D:..>   jump past the remaining variants. Pointers must be recalculated after

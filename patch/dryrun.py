@@ -28,7 +28,7 @@ def _reflow(t):
     for part in _re.split(r'([▼■])', t):
         if part in ('▼', '■') or part.count('⏎') < 2: out.append(part); continue
         lead = _LEAD.match(part).group(1); body = part[len(lead):]
-        if _re.search(r'[<{【〔«»‹¦⏸]', body): out.append(part); continue
+        if _re.search(r'[<{【〔«»⟪⟫‹¦⏸⏹]', body): out.append(part); continue
         words = body.replace('⏎', ' ').split(); lines = ['']
         for w in words:
             if lines[-1] and len(lines[-1]) + 1 + len(w) > 30: lines.append(w)
@@ -57,7 +57,7 @@ def _arrow(t):
         lead = _LEAD.match(part.lstrip('§')).group(1); pre = '§' if part.startswith('§') else ''
         body = part[len(pre) + len(lead):]
         lines = body.split('⏎')
-        if len(lines[-1]) < 30 or _re.search(r'[<{【〔«»‹¦⏸]', body) or body.startswith('⏎'): out.append(part); continue
+        if len(lines[-1]) < 30 or _re.search(r'[<{【〔«»⟪⟫‹¦⏸⏹]', body) or body.startswith('⏎'): out.append(part); continue
         words = body.replace('⏎', ' ').split(); n = len(lines)
         rev = []; cur = ''; width = 28
         for w in reversed(words):

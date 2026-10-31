@@ -43,7 +43,7 @@ def jp_tokens(o, a, b):
         out.append(t)
     return out
 
-TOK_RE = re.compile(r'(⟦KEEP⟧|¦|⇥[+-]?|⟨w\d+⟩|▽|⏎|▼|■|⏸\d?|«|»|‹|【[^】]*】|\{\[[^\]]*\]\}|〔[^〕]*〕|<[0-9A-F]{2}(?::[0-9a-f]+)?>)')
+TOK_RE = re.compile(r'(⟦KEEP⟧|¦|⟪|⟫|⏹|⇥[+-]?|⟨w\d+⟩|▽|⏎|▼|■|⏸\d?|«|»|‹|【[^】]*】|\{\[[^\]]*\]\}|〔[^〕]*〕|<[0-9A-F]{2}(?::[0-9a-f]+)?>)')
 def en_tokens(s):
     out = []
     for part in TOK_RE.split(s):
@@ -53,6 +53,9 @@ def en_tokens(s):
             elif part == '¦': out.append(('join',))
             elif part == '⏎': out.append(('free', 0x0B, b''))
             elif part == '▽': out.append(('free', 0x0C, b''))      # box break added in English only
+            elif part == '⏹': out.append(('free', 0xFF, b''))      # end of message added in English only (scene code runs the rest)
+            elif part == '⟪': out.append(('free', 0x01, b''))      # gold highlight added in English only
+            elif part == '⟫': out.append(('free', 0x00, b''))
             elif part == '⇥': out.append(('free', 0x18, b'\x00'))      # centring indent added in English
             elif part == '⇥+': out.append(('free', 0x18, b'\x01'))    # same, odd padding rounded right (per-line tweak)
             elif part == '⇥-': out.append(('free', 0x18, b'\x02'))    # same, odd padding rounded left (per-line tweak)

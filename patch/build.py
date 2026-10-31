@@ -165,6 +165,12 @@ def insert_all(out_path, syms):
         P = ram_patches(o, bank, addr, syms)
         if key == '17#7':                              # story scroll: English line builder over the JP text
             P += scroll_patches(rom, syms, R.wrapped)
+        if key == '05#8':                              # Gaw's cave: window closes for 3 s before "Okay, then!" and before the voice
+            g, m = syms['GawSplit'], syms['MarilWait']
+            P.append((0x102, bytes([0x22, g & 0xFF, (g >> 8) & 0xFF, g >> 16, 0xEA])))
+            P.append((0x573, bytes([0x22, m & 0xFF, (m >> 8) & 0xFF, m >> 16, 0xEA])))
+            hp = lorom(0x20, syms['HookPtr0537'] & 0xFFFF); a537 = (bank << 16) | I.LAST_MSGS['M0537']
+            rom[hp:hp+3] = a537.to_bytes(3, 'little')
         if os.environ.get('PM_TEST_SHOP') and key == '13#0':      # test only: town 'closed' doors open Basso's shop
             P.append((0x421, b'\x4c\x33\xc4'))
         if os.environ.get('PM_TEST_END') and key == '13#0':       # test only: the 'empty house' door starts the ending
@@ -193,6 +199,7 @@ def insert_all(out_path, syms):
     report.append(SP.do_savelist(rom))
     report.append(SP.do_mapnames(rom))
     report.append(SP.do_headers(rom))
+    report.append(SP.do_keys(rom))
     report.append(SP.do_credits(rom))
     if os.environ.get('PM_LOGO') == 'en':                      # alternate release: English title lettering
         report.append(SP.do_logo(rom))

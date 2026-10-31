@@ -196,3 +196,48 @@ user states 006/008 x 3 heroes x 3 policies: clean.
 - KEEP_SIZE pads 05#1 and 13#0 so later text blocks keep their v1.0 addresses.
 - M0654 (tavern sign narration): removed the leading line break added in the green-box pass. The game enters this message a few bytes early, at a line break + indent kept from the Japanese, so it already starts on line 2; the review renders started at the message itself and showed it on line 1. Scan of every message for a line break hidden before its start: only M0473, M0654, M1785 (narration) and M2045; rendered from the real entry point, all now start on line 2.
 - Siana (Jungle village): first talk box 2 ends "counts on him, but..."; box 3 (X0002) "...he ran off from the village all by himself." (was "She ran off..."); second talk opens "Namo's sense of justice is second to none." (was "but more than that, ..."). X0002 was missed by the first extraction pass and translated on its own later, so its unstated subject was guessed wrong, and M0042 was written as if it continued M0041.
+
+# RELEASED as v1.1
+- Line breaks: Nuts Cracker's introduction ("Indeed! I am the boss / of the Marionette Gang... / Nuts Cracker!!"),
+  the $2,000,000 bounty line, and Material's "Getting old is no fun at all." on one line.
+
+# RELEASED as v1.2 (2026-10-31)
+Changes
+- 0C#9 shop KEYS screen: a 32x32 tile map whose letter tiles are ASCII - 0x20; the bottom row still had
+  ケッテイ / キャンセル, now CONFIRM / CANCEL (special.do_keys).
+- Dwarf Medicine Man, beastie shop lines ("Which one ya want, huh?!", "I'll save your progress / for ya.",
+  "Hey, welcome! Whaddaya need?" on one line - the JP indent token moved to the end of the line, where it does nothing).
+- Heal price boxes (17#4 S1374, M1997) centred, amount in gold; card cash (M1970, M2001) "... / N Gold" centred.
+  The number printer drops leading blanks, so a run-time number line is exactly centred for one digit count only.
+- New English-only tokens: ⟪ ⟫ (gold on/off, not counted against the Japanese highlight codes) and ⏹ (end of message).
+- Gaw's cave (scene 05#8): two scene-code hooks (engine.asm $20:E000, patched into the scene by build.py):
+  GawSplit replaces the start of the Gaw talk; M0536 ends with ⏹, the window closes, 180 frames pass
+  (JSL $00:E878 = wait A frames), then the talk resumes at M0537, whose address build.py writes into HookPtr0537.
+  Mail only: the talk branches on the lead hero and Tatto's branch never reaches M0536. MarilWait puts the same
+  wait between "Is she Tatto's girlfriend?" and the Mysterious Voice.
+  The resident message starter $7E:B037 ends in RTS; pushing $B01D makes it return to the RTL at $7E:B01E.
+- Pauses: M0533, M0534, M0537, M0576 (⏸ = 16 frames, ⏸1 = 32, ⏸2 = 80; they add up when chained).
+- Openers "?" / "!" before text replaced: M0904 "Hmm?", M0949 "Huh?!", M1056 "Wha—?!", M1152 "Ah!".
+
+Findings
+- The original pause handler ($00:EDCF) skips every pause when the message speed is Fast ($0211 = 0).
+- Shop testing: $0925 = shop type (2 beastie, 0 polite; both use 17#4), $0490 = HP, $0206 = Monster Card value.
+- Shop message 9 ("[item] will be N gold") is never shown: no code path starts it; buying shows "[item] / That it?".
+- Scene 05#8 event zones are 8-byte records [location, x0, x1, y0, y1, 0, handler] read by $7E:B937 with D = $0600.
+- Port Miine's map label is ミーネの砦 ("fortress") while all dialogue says ミーネの港 ("port"); left as Port Miine.
+
+Lessons
+- A colour change starts a new two-letter block. Text that follows a highlighted run-time number on the same line
+  gets a gap whenever the number has an odd length; end the line with the number instead.
+- A scene hook that jumps into one branch of a hero-branched talk must check the hero; test every hero.
+- Judge pauses in game at Normal speed; the test host runs text at full speed.
+- Test saves for a scene: edit the player's own emulator state in place (clear the scene's "seen" bit, re-apply the
+  build's scene RAM patches). Desktop snes9x writes version 11 states, the libretro core version 14; the blocks match
+  in size except NAM, SRA and the screenshot, but the sound block must stay from the real v11 state.
+- Menu text can be a tile map with an ASCII-like tile order; search streams for the word as 16-bit tile words.
+- Read map-label graphics directly; don't infer them from dialogue.
+
+Tests before release: static checks identical to v1.0; every message as Mail, Tatto and Gaw (only new flag: the
+intended gold "Jungle"); the user's save states as every hero (one crash: Gaw forced as lead in his own scene,
+impossible in play, also broken in v1.1); shops (Buy, Cash, Heal, Keys, Save, Speed, both shop types), the Gaw scene
+and Maril's rescue as Mail and Tatto played through by hand. The repo build reproduces both release ROMs byte for byte.

@@ -128,7 +128,7 @@ def do_174(rom, R, I, bank, addr, en):
         return ''.join(line).rstrip()
     EXTRA_EN = {
         'S12B9': '⏎<18:04><1A>Will that be all right?■',
-        'S1374': '<1A>Treatment will cost⏎<19>ヂ長） gold.⏎<1B><18:04><1B>Is that all right?■',
+        'S1374': '<1A>     Treatment will cost⏎⟪           <19>ヂ長） Gold⟫⏎<1B><18:04><1B>Is that all right?■',
         'S1497': '§' + menu([(1, 'Buy'), (4, 'Cash'), (7, 'Heal'), (10, 'Opts'), (13, 'Exit')], 30) + '■',
         'S14AF': '§' + menu([(1, 'Keys'), (5, 'Save'), (9, 'Speed'), (13, 'Back')], 30) + '■',
         'S161B': '<1A><18:04>Anything else ya need?■',
@@ -509,3 +509,22 @@ def do_logo(rom):
     rom[s5[2]:s5[2]+len(c)] = c; c1 = (len(c), s5[3] - s5[2])
     c2 = recompress_into(rom, (0x1B, 7), bytes(mp))
     return 'title logo (English): %d tiles; 1B#5 %d/%d, 1B#7 %d/%d' % (used + 1, c1[0], c1[1], c2[0], c2[1])
+
+# ------------------------------------------------------------------ 0C#9: shop KEYS (controls) screen
+def do_keys(rom):
+    """The controls screen is a 32x32 tile map whose letter tiles are ASCII - 0x20.  The bottom row
+    still had katakana: ケッテイ (confirm) and キャンセル (cancel).  Same layout as the rows above:
+    label, dots, then the button letter in the same column."""
+    key = (0x0C, 9)
+    o, _ = decompress(bytes(rom), STREAMS[key][2]); o = bytearray(o)
+    row = 0x5C0
+    def put(col, text):
+        for i, ch in enumerate(text):
+            a = row + 2 * (col + i)
+            hi = o[a + 1] & 0xFC                       # keep the palette/priority bits of the cell
+            t = 0x0F if ch == '.' else ord(ch) - 0x20
+            o[a] = t & 0xFF; o[a + 1] = hi | (t >> 8)
+    put(3, 'CONFIRM....')                          # ....B stays in place
+    put(17, 'CANCEL.....')                         # .....Y stays in place
+    n, slot = recompress_into(rom, key, bytes(o))
+    return 'keys screen: CONFIRM / CANCEL (0C#9 %d/%d)' % (n, slot)

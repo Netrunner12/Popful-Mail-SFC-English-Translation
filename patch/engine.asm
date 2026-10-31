@@ -486,3 +486,28 @@ base off
 org $28D000
 ScrollText:
     db $FF
+
+; ---- scene 05#8 (Gaw's cave): close the window and wait 3 s between two boxes (v1.2)
+; Called with JSL from the scene code in $7E (8-bit A).  A message is run through the resident
+; starter $7E:B037, which ends in RTS: a pushed $B01D makes that RTS land on the RTL at $7E:B01E.
+org $20E000
+HookPtr0537:
+    dl $000000                ; filled in by build.py: address of M0537 ("Okay, then!")
+GawSplit:                     ; replaces LDA #$01 : JSR $B037 at $7E:C102
+    PHK : PEA.w GawSplitCont-1
+    PEA.w $B01D
+    LDA.b #$01
+    JML $7EB037               ; Gaw talk up to "Well, let's see..." (ends there now)
+GawSplitCont:
+    LDA.l $000202 : BEQ +     ; the split is only in Mail's lines; Tatto's talk has already run to its end
+    RTL
++   LDA.b #180 : SEC : JSL $00E878      ; 3 s, window closed
+    LDA.l HookPtr0537+2 : STA.l $000736
+    REP #$20 : LDA.l HookPtr0537 : STA.l $000734 : SEP #$20
+    PEA.w $B01D
+    JML $7EB03B               ; run the rest of the talk from "Okay, then!" (skips the index lookup)
+MarilWait:                    ; replaces LDA #$0C : JSR $B037 at $7E:C573
+    LDA.b #180 : SEC : JSL $00E878      ; 3 s between "Is she Tatto's girlfriend?" and the voice
+    PEA.w $B01D
+    LDA.b #$0C
+    JML $7EB037
