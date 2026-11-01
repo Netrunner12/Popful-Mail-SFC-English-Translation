@@ -109,7 +109,7 @@ The first build also decodes a message index from your ROM into `out/`. The stan
 
 To look at the Japanese next to the English, run `python3 tools/side_by_side.py`. It decodes the Japanese from your ROM into `out/side_by_side.tsv`; the Japanese script itself is not stored in this repository.
 
-`python3 tools/text_tables.py` writes six tables of all the game's text to `out/text_tables/` (world map, menus, dialogue, scrolling text and other, epilogue, credits), each with the Japanese from your ROM, the English, where the text appears, and the changes made on request. It writes CSV files, plus one spreadsheet if `openpyxl` is installed.
+`python3 tools/text_tables.py` writes seven tables of all the game's text to `out/text_tables/` (world map, menus, shops, dialogue, scrolling text and other, epilogue, credits), each with the Japanese from your ROM, the English, where the text appears, and the changes made on request. It writes CSV files, plus one spreadsheet if `openpyxl` is installed.
 
 ## Notes
 

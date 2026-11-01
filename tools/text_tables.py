@@ -1,14 +1,15 @@
-"""Write six tables of all the game's text, Japanese next to the English, from your own copy of the ROM.
+"""Write seven tables of all the game's text, Japanese next to the English, from your own copy of the ROM.
 
     python3 tools/text_tables.py
 
-out/text_tables/1_world_map.csv     destination labels on the world map
-                2_menus.csv         title, save lists, shops, status screen, item names, other menu text
-                3_dialogue.csv      every message box, in story order
-                4_scrolling_misc.csv  the Castle Alcazar story scroll and the title logo
-                5_epilogue.csv      the ending epilogue
-                6_credits.csv       the staff credits
-                text_tables.xlsx    the same six tables as sheets (if openpyxl is installed)
+out/text_tables/1_world_map.csv       destination labels on the world map
+                2_menus.csv           title, save lists, shop menus, status screen, item names, other menu text
+                3_shops.csv           what the shopkeepers say (polite and beastie shops)
+                4_dialogue.csv        every other message box, in story order
+                5_scrolling_misc.csv  the Castle Alcazar story scroll and the title logo
+                6_epilogue.csv        the ending epilogue
+                7_credits.csv         the staff credits
+                text_tables.xlsx      the same seven tables as sheets (if openpyxl is installed)
 
 Columns: ID, Japanese (decoded from your ROM), English (as the build inserts it), Context, Changes
 (wording, pause and colour changes made at the project owner's request; centring and line breaks are
@@ -320,13 +321,16 @@ rows['dialogue'].sort(key=okey)
 # epilogue and credits get tables of their own
 rows['epilogue'] = [r for r in rows['dialogue'] if r[0].startswith('M') and 2396 <= int(r[0][1:]) <= 2425]
 rows['dialogue'] = [r for r in rows['dialogue'] if r not in rows['epilogue']]
+rows['shops'] = [r for r in rows['dialogue'] if r[3].startswith('Shop')]
+rows['dialogue'] = [r for r in rows['dialogue'] if not r[3].startswith('Shop')]
 rows['credits'] = [r for r in rows['misc'] if r[0].startswith('CREDIT')]
 rows['misc'] = [r for r in rows['misc'] if not r[0].startswith('CREDIT')]
 
 HEAD = ['ID', 'Japanese', 'English', 'Context', 'Changes']
 OUT = os.path.join('out', 'text_tables'); os.makedirs(OUT, exist_ok=True)
-TABLES = [('1_world_map', 'World Map', 'map'), ('2_menus', 'Menus', 'menus'), ('3_dialogue', 'Dialogue', 'dialogue'),
-          ('4_scrolling_misc', 'Scrolling & Misc', 'misc'), ('5_epilogue', 'Epilogue', 'epilogue'), ('6_credits', 'Credits', 'credits')]
+TABLES = [('1_world_map', 'World Map', 'map'), ('2_menus', 'Menus', 'menus'), ('3_shops', 'Shops', 'shops'),
+          ('4_dialogue', 'Dialogue', 'dialogue'), ('5_scrolling_misc', 'Scrolling & Misc', 'misc'),
+          ('6_epilogue', 'Epilogue', 'epilogue'), ('7_credits', 'Credits', 'credits')]
 for name, title, key in TABLES:
     with open(os.path.join(OUT, name + '.csv'), 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f); w.writerow(HEAD); w.writerows(rows[key])
