@@ -242,7 +242,10 @@ intended gold "Jungle"); the user's save states as every hero (one crash: Gaw fo
 impossible in play, also broken in v1.1); shops (Buy, Cash, Heal, Keys, Save, Speed, both shop types), the Gaw scene
 and Maril's rescue as Mail and Tatto played through by hand. The repo build reproduces both release ROMs byte for byte.
 
-# After v1.2 (not released yet)
+# RELEASED as v1.2.1 (2026-10-31)
 - Credits: PROGRAMMING and the second SCENARIO name are 永島 純, Jun **Nagashima** (was misread as 水島, Mizushima).
   The 16-px kanji has the dot of 永 on top. All names checked against the SNES credits on MobyGames (kanji and
   readings); every other name matches, including the six readings noted as unconfirmed since v0.6.
+- Release: CRC32 1870CA23 (standard), 7C21198B (English logo). The repo build reproduces the standard ROM byte for byte; the English-logo ROM differs from it only in the title logo, as in v1.2.
+- New tool tools/text_tables.py: six tables of all game text (Japanese from the user's ROM, English, context,
+  requested changes) in out/text_tables/; the Japanese is never stored in the repo.

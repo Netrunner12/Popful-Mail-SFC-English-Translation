@@ -9,7 +9,7 @@ Made with Claude and meticulously play tested and curated by Netrunner.
 <img src="docs/images/intro.png" width="384" alt="Opening dialogue in English">
 </p>
 
-**v1.2 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END" on the patched ROM. An identical version with an English "Popful Mail" title plate has been created as well.
+**v1.2.1 — complete.** Every message, menu, status screen, map label, shop, the story scroll and the staff credits are in English, set in an original font. The game has been played through to "THE END" on the patched ROM. An identical version with an English "Popful Mail" title plate has been created as well.
 
 This is a new translation of the Super Famicom version. It does not use the script from the English Sega CD release. 
 
@@ -29,13 +29,13 @@ Get the patches from the [Releases](../../releases) page. There are two editions
 
 | Edition | Title screen | Patch |
 |---|---|---|
-| Standard | original Japanese logo | `popful_mail_en_v1.2.bps` / `.ips` |
-| English logo | English "POPFUL MAIL" logo | `popful_mail_en_v1.2_englishlogo.bps` / `.ips` |
+| Standard | original Japanese logo | `popful_mail_en_v1.2.1.bps` / `.ips` |
+| English logo | English "POPFUL MAIL" logo | `popful_mail_en_v1.2.1_englishlogo.bps` / `.ips` |
 
 Everything apart from the title logo is identical. Apply **one** of them to the original ROM:
 
 - **ROM:** `Popful Mail (Japan).sfc`, 1 MB, no copier header, CRC32 `88E5BCDF`
-- **Result:** 2 MB LoROM. CRC32 `170B6B97` (standard) or `B4A88AC3` (English logo)
+- **Result:** 2 MB LoROM. CRC32 `1870CA23` (standard) or `7C21198B` (English logo)
 - The `.bps` file checks the source ROM before patching and is the one to use. Any BPS patcher works, such as [Floating IPS](https://github.com/Alcaro/Flips) or [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/).
 
 ROMs are not provided here.
@@ -87,7 +87,7 @@ python3 patch/make.py build/popful_mail_en.sfc                    # standard edi
 PM_LOGO=en python3 patch/make.py build/popful_mail_en_logo.sfc    # English-logo edition
 
 # patches (.bps and .ips) from original -> built ROM
-python3 patch/mkpatch.py "rom/Popful Mail (Japan).sfc" build/popful_mail_en.sfc build/popful_mail_en_v1.2
+python3 patch/mkpatch.py "rom/Popful Mail (Japan).sfc" build/popful_mail_en.sfc build/popful_mail_en_v1.2.1
 ```
 
 The first build also decodes a message index from your ROM into `out/`. The standard build takes about 2 minutes; the English-logo build about 15, because the logo data only fits with the slowest compression setting. Both reproduce the released ROMs byte for byte.
@@ -108,6 +108,8 @@ The first build also decodes a message index from your ROM into `out/`. The stan
 | `docs/` | release notes for every version and the development log |
 
 To look at the Japanese next to the English, run `python3 tools/side_by_side.py`. It decodes the Japanese from your ROM into `out/side_by_side.tsv`; the Japanese script itself is not stored in this repository.
+
+`python3 tools/text_tables.py` writes six tables of all the game's text to `out/text_tables/` (world map, menus, dialogue, scrolling text and other, epilogue, credits), each with the Japanese from your ROM, the English, where the text appears, and the changes made on request. It writes CSV files, plus one spreadsheet if `openpyxl` is installed.
 
 ## Notes
 
