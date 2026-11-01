@@ -121,7 +121,7 @@ To look at the Japanese next to the English, run `python3 tools/side_by_side.py`
 
 ## Credits
 
-- Translation patch: Netrunner12
+- Translation patch: Netrunner Creative
 - English title logo: created with ChatGPT
 
 Popful Mail © Nihon Falcom. This is an unofficial fan project, not affiliated with or endorsed by Falcom or any other rights holder.
