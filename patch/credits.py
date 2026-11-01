@@ -4,7 +4,7 @@ from font_en import G
 
 # (page, top row) -> name.  Readings marked * could not be confirmed from a published source.
 NAMES = {
-    (1, 4): 'Jun Mizushima', (1, 22): 'Hideyuki Shiota', (1, 29): 'Jun Mizushima',
+    (1, 4): 'Jun Nagashima', (1, 22): 'Hideyuki Shiota', (1, 29): 'Jun Nagashima',
     (2, 2): 'Mayuko Suzuki', (2, 18): 'Yuichi Shiota', (2, 23): 'Mayuko Suzuki', (2, 28): 'Norihiro Sawada',
     (3, 1): 'Kazuo Nakamura', (3, 6): 'Yuichi Takashita', (3, 30): 'Mieko Ishikawa',
     (4, 3): 'Atsushi Shirakawa', (4, 8): 'Hirofumi Matsuoka', (4, 13): 'Takahiro Tsunashima',   # *

@@ -112,7 +112,7 @@ To look at the Japanese next to the English, run `python3 tools/side_by_side.py`
 ## Notes
 
 - In-game saves carry over between patch versions. Emulator save states made with an older version of the patch can show old text or crash, because they hold the old code in memory.
-- Some staff-name readings in the credits could not be confirmed from a published source (see `docs/release_notes/README_v0.6.txt`). Corrections are welcome — please open an issue.
+- Staff names in the credits are romanized from the kanji in the original credits, and match the [SNES credits listed on MobyGames](https://www.mobygames.com/game/160846/popful-mail/credits/). Corrections are welcome — please open an issue.
 
 ## License
 
