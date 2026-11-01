@@ -109,7 +109,30 @@ The first build also decodes a message index from your ROM into `out/`. The stan
 
 To look at the Japanese next to the English, run `python3 tools/side_by_side.py`. It decodes the Japanese from your ROM into `out/side_by_side.tsv`; the Japanese script itself is not stored in this repository.
 
-`python3 tools/text_tables.py` writes seven tables of all the game's text to `out/text_tables/` (world map, menus, shops, dialogue, scrolling text and other, epilogue, credits), each with the Japanese from your ROM, the English, where the text appears, and the changes made on request. It writes CSV files, plus one spreadsheet if `openpyxl` is installed.
+## Text tables
+
+`tools/text_tables.py` writes seven tables of all the game's text, with the Japanese next to the English, for anyone reviewing or editing the translation.
+
+What you need: Python 3 and your own copy of the ROM, placed at `rom/Popful Mail (Japan).sfc` (1 MB, no copier header, CRC32 `88E5BCDF`) or pointed to with `PM_ROM`. Asar and numpy are not needed. For a spreadsheet as well as CSV files, also install `openpyxl` (`pip install openpyxl`).
+
+```sh
+python3 tools/text_tables.py          # Windows: python tools\text_tables.py
+```
+
+The first run takes about a minute (it decodes a message index from your ROM); later runs take a few seconds. The tables go to `out/text_tables/`:
+
+| File | Contents |
+|---|---|
+| `1_world_map.csv` | destination labels on the world map |
+| `2_menus.csv` | title screen, save lists, shop menus, status screen, item names, other menu text |
+| `3_shops.csv` | what the shopkeepers say |
+| `4_dialogue.csv` | every other message box, in story order |
+| `5_scrolling_misc.csv` | the Castle Alcazar story scroll and the title logo |
+| `6_epilogue.csv` | the ending epilogue |
+| `7_credits.csv` | the staff credits |
+| `text_tables.xlsx` | the same seven tables as sheets (only with `openpyxl`) |
+
+Columns: ID, Japanese, English, Context (where the text appears), Changes (wording, pause and colour changes made on request; centring and line breaks are not listed). The English is what the build inserts from the current files in this repository, so edits to the script or the correction files show up the next time the tool runs. The Japanese is decoded from your ROM every time and never stored here; `out/` is excluded from Git.
 
 ## Notes
 
